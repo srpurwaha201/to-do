@@ -1,0 +1,19 @@
+
+.strikethrough {
+	text-decoration: line-through;
+}	
+.imp {
+	color: blue;
+	}	
+
+.urg {
+	color: orange;
+	}
+
+.both{
+	color: red;
+	font-weight: bold
+}
+.none{
+	color: magenta;
+}

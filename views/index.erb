@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="/style.css" rel = "stylesheet"  type = "text/css" > 
+	<title>To-do</title>
+</head>
+<body>
+	<form action = "/add" method = "post">
+	<input type = "text" name = "new_task">
+	<input type = "checkbox" name = "important"> <span class = "imp">Important</span>
+	<input type = "checkbox" name = "urgent"><span class = "urg"> Urgent</span>
+	<input type = "submit" value = "Add">
+	</form>
+	<br>
+	<ul>
+	<% tasks.each do |todo| %>
+			<form action = "/toggle" method = "post">
+		<% if todo.done %>
+			<% if todo.important && todo.urgent %>
+				<li class = "both strikethrough">
+			<% elsif todo.urgent %>
+				<li class = "urg strikethrough">
+			<% elsif (todo.important)%>
+				<li class = "imp strikethrough">
+			<% else %>
+				<li class = "none strikethrough">
+			<% end %>
+		<% else %>
+			<% if todo.important && todo.urgent %>
+				<li class = "both">
+			<% elsif todo.urgent %>
+				<li class = "urg">
+			<% elsif (todo.important)%>
+				<li class = "imp">
+			<% else %>
+				<li class = "none">
+			<% end %>
+		<% end %>
+		<%= todo.task %>
+		
+		<input type="checkbox" name="task_toggle" value = "<%=todo.task%>" onChange="this.form.submit()">
+	
+		<!--
+			checked box doesn't uncheck
+		<% if todo.done %>
+			<input type = "checkbox" name="task_toggle" value = "<%=todo.task%>" onChange="this.form.submit()" checked >
+		<% else %>
+			<input type = "checkbox" name="task_toggle" value = "<%=todo.task%>" onChange="this.form.submit()">
+		<% end %>
+		-->
+		<!-- using button instead of checkbox
+		<input type = "hidden" name = "task_toggle"  value = "<%=todo.task%>">
+		<% if todo.done %>
+			<input type = "submit" value = "Undone">
+		<% else %> 
+			<input type = "submit" value = "Done">
+		<% end %>
+		-->
+		</form>
+		</li>
+	<% end %>
+	</ul>
+</body>
+</html>
