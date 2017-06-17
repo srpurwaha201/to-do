@@ -56,6 +56,7 @@ post '/signin' do
 			return redirect '/'
 		else
 			return redirect '/signin'
+		end
 	end
 end
 
