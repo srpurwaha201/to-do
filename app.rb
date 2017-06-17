@@ -31,7 +31,7 @@ get '/' do
 		return redirect '/signin'
 	else
 		tasks = Todo.all(user_id: session[:user_id])
-		erb :index locals: {user_id: session[:user_id], tasks: tasks}
+		erb :index, locals: {user_id: session[:user_id], tasks: tasks}
 	end
 end
 
