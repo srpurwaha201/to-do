@@ -32,13 +32,14 @@ get '/' do
 	else
 		tasks = Todo.all(user_id: session[:user_id])
 		erb: index locals: {user_id: session[:user_id], tasks: tasks}
+	end
 end
 
 get '/signin' do
 	erb: signin
 end
 
-get '/signup'
+get '/signup' do
 	erb: signup
 end
 
