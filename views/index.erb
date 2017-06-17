@@ -5,11 +5,13 @@
 	<title>To-do</title>
 </head>
 <body>
+	<h2> <%=User.get(user_id).email %></h2>
 	<form action = "/add" method = "post">
 	<input type = "text" name = "new_task">
 	<input type = "checkbox" name = "important"> <span class = "imp">Important</span>
 	<input type = "checkbox" name = "urgent"><span class = "urg"> Urgent</span>
 	<input type = "submit" value = "Add">
+	<a href = '/signout'>Sign Out</a>
 	</form>
 	<br>
 	<ul>
@@ -38,7 +40,7 @@
 		<% end %>
 		<%= todo.task %>
 		
-		<input type="checkbox" name="task_toggle" value = "<%=todo.task%>" onChange="this.form.submit()">
+		<input type="checkbox" name="id" value = "<%=todo.id%>" onChange="this.form.submit()">
 	
 		<!--
 			checked box doesn't uncheck
